@@ -35,9 +35,9 @@ class Node:
         # não verifica o valor nó inicial
         if self.__next is not None:
             if self.__next.getInfo() == value:
-                if self.__next.getNext() is None:# A -> B ==> A
+                if self.__next.getNext() is None:  # A -> B ==> A
                     self.__next = None
-                else: # A -> B -> C ==> A -> B
+                else:  # A -> B -> C ==> A -> B
                     self.__next = self.__next.getNext()
                 return True
             else:

@@ -27,7 +27,7 @@ class NodeTest(unittest.TestCase):
     def test_add(self):
         node = Node()
         node.add(1)
-        self.assertEqual(node.findAll(),[1])
+        self.assertEqual(node.findAll(), [1])
         for i in range(2, 6):
             node.add(i)
         self.assertEqual(node.findAll(), [1, 2, 3, 4, 5])
@@ -45,4 +45,3 @@ class NodeTest(unittest.TestCase):
         # remoção no fim
         node.remove(5)
         self.assertEqual(node.findAll(), [1, 2, 4])
-
