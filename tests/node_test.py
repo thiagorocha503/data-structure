@@ -31,3 +31,18 @@ class NodeTest(unittest.TestCase):
         for i in range(2, 6):
             node.add(i)
         self.assertEqual(node.findAll(), [1, 2, 3, 4, 5])
+
+    def test_remove(self):
+        node = Node()
+        for i in range(1, 6):
+            node.add(i)
+        self.assertEqual(node.findAll(), [1, 2, 3, 4, 5])
+
+        # remoção entre Node
+        node.remove(3)
+        self.assertEqual(node.findAll(), [1, 2, 4, 5])
+
+        # remoção no fim
+        node.remove(5)
+        self.assertEqual(node.findAll(), [1, 2, 4])
+
