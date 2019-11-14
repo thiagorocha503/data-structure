@@ -23,3 +23,11 @@ class NodeTest(unittest.TestCase):
         self.assertTrue(isinstance(node.getNext(), Node))
         self.assertEqual(node.getNext(), next_node)
         self.assertRaises(NodeTypeError, lambda: node.setNext(3))
+
+    def test_add(self):
+        node = Node()
+        node.add(1)
+        self.assertEqual(node.findAll(),[1])
+        for i in range(2, 6):
+            node.add(i)
+        self.assertEqual(node.findAll(), [1, 2, 3, 4, 5])
