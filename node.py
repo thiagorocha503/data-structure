@@ -53,4 +53,4 @@ class Node:
         return nodes
 
     def __str__(self):
-        return "[%s]" % str(self.__info)
+        return str(self.findAll())
