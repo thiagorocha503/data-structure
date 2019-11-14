@@ -3,7 +3,7 @@ import struture_exception
 
 class Node:
 
-    def __init__(self, info, next_=None):
+    def __init__(self, info=None, next_=None):
         self.__info = info
         self.__next = self.setNext(next_)
 
@@ -25,6 +25,7 @@ class Node:
     def add(self, value):
         if self.__info is None:
             self.__info = value
+            return None
         if self.__next is None:
             self.__next = Node(value)
         else:
@@ -51,6 +52,15 @@ class Node:
             nodes.append(next_node.getInfo())
             next_node = next_node.getNext()
         return nodes
+
+    def find(self, value):
+        if self.__info == value:
+            return True
+        else:
+            if self.__next is None:
+                return False
+            else:
+                return self.__next.find(value)
 
     def __str__(self):
         return str(self.findAll())
