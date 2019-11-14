@@ -31,13 +31,19 @@ class Node:
             return self.__next.add(value)
 
     def remove(self, value):
-        if self.__info == value:  # encontrou
-            self.__next = Node(value)
-        else:
-            if self.__next is None:  # fim da lista
-                return False
+        # não verifica o valor nó inicial
+        if self.__next is not None:
+            if self.__next.getInfo() == value:
+                if self.__next.getNext() is None:# A -> B ==> A
+                    self.__next = None
+                else: # A -> B -> C ==> A -> B
+                    self.__next = self.__next.getNext()
+                return True
             else:
                 return self.__next.remove(value)
+        else:
+            return False
+
     def findAll(self):
         lista = []
         if self.__info is None:
