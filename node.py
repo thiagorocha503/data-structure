@@ -45,13 +45,12 @@ class Node:
             return False
 
     def findAll(self):
-        lista = []
-        if self.__info is None:
-            return lista
-        proximo = self
-        while proximo is not None:
-            lista.append(proximo.__info)
-        return lista
+        nodes = [self.__info]
+        next_node = self.__next
+        while next_node is not None:
+            nodes.append(next_node.getInfo())
+            next_node = next_node.getNext()
+        return nodes
 
     def __str__(self):
         return "[%s]" % str(self.__info)
