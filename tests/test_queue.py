@@ -1,5 +1,5 @@
 import unittest
-from queue import Queue_
+from queue_ import Queue_
 from struture_exception import QueueError
 
 
