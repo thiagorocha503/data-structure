@@ -16,51 +16,11 @@ class Node:
     def getNext(self):
         return self.__next
 
-    def setNext(self, next_):
-        if isinstance(next_, Node) or next_ is None:
-            self.__next = next_
+    def setNext(self, node):
+        if isinstance(node, Node) or node is None:
+            self.__next = node
         else:
-            raise struture_exception.NodeTypeError(next_)
-
-    def add(self, value):
-        if self.__info is None:
-            self.__info = value
-            return None
-        if self.__next is None:
-            self.__next = Node(value)
-        else:
-            return self.__next.add(value)
-
-    def remove(self, value):
-        # não verifica o valor nó inicial
-        if self.__next is not None:
-            if self.__next.getInfo() == value:
-                if self.__next.getNext() is None:  # A -> B ==> A
-                    self.__next = None
-                else:  # A -> B -> C ==> A -> B
-                    self.__next = self.__next.getNext()
-                return True
-            else:
-                return self.__next.remove(value)
-        else:
-            return False
-
-    def findAll(self):
-        nodes = [self.__info]
-        next_node = self.__next
-        while next_node is not None:
-            nodes.append(next_node.getInfo())
-            next_node = next_node.getNext()
-        return nodes
-
-    def find(self, value):
-        if self.__info == value:
-            return True
-        else:
-            if self.__next is None:
-                return False
-            else:
-                return self.__next.find(value)
+            raise struture_exception.NodeTypeError(node)
 
     def __str__(self):
-        return str(self.findAll())
+        return "(%s)" % str(self.__info)

@@ -1,3 +1,12 @@
+class ListDynamicIndexError(Exception):
+
+    def __init__(self, index: int):
+        self.__index: int = index
+
+    def __str__(self):
+        return "Index <%d> out of range" % self.__index
+
+
 class QueueError(Exception):
 
     def __init__(self, erro):
@@ -13,10 +22,10 @@ class NodeTypeError(Exception):
         self.object_passado = object_passado
 
     def __str__(self):
-        return "Expected um Node object,  but received type<%s>" % str(type(self.object_passado))
+        return "Expected Node object, but received type<%s>" % str(type(self.object_passado))
 
 
 class StackUnderflowError(Exception):
 
     def __str__(self):
-        return "StackUnderflowError: A pilha está vazia"
+        return "StackUnderflowError: Stack is empty"

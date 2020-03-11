@@ -1,4 +1,5 @@
-from listDinamic import ListDinamic
+from list_dynamic import ListDynamic
+
 
 class HashTable:
 
@@ -9,7 +10,8 @@ class HashTable:
             self.table.append(None)
 
     def isHashValido(self, hash):
-        if hash >= 0 and hash < self.size:
+        # hash >= 0 and hash < self.size:
+        if 0 <= hash < self.size:
             return True
         else:
             return False
@@ -19,7 +21,7 @@ class HashTable:
             print("Index inválido: ", str(hash))
             return None
         if self.table[hash] is None:
-            lista = ListDinamic()
+            lista = ListDynamic()
             lista.add(value)
             self.table[hash] = lista
         else:
@@ -35,16 +37,14 @@ class HashTable:
             pass
 
 
-
-
 h = HashTable(3)
 h.insert(0, "thiago")
 h.insert(1, "Rocha")
 h.insert(2, "ferreira")
 print("=======")
 print("0 ", h.table[0])
-print("1 ",h.table[1])
-print("2 ",h.table[2])
+print("1 ", h.table[1])
+print("2 ", h.table[2])
 print("=======")
 h.insert(2, "@")
 h.insert(2, "@")

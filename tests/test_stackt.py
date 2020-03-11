@@ -5,18 +5,16 @@ from struture_exception import StackUnderflowError
 
 class StackTest(unittest.TestCase):
 
-    def test_create(self):
-        self.assertIsInstance(Stack(), Stack)
-
     def test_pop_push_peek(self):
         #  pilha iniciada
         p = Stack()
+        self.assertEqual(p.findAll(), [])
         #   Stack
         #
         #    | |
         #    |_|
         #
-        self.assertRaises(StackUnderflowError, lambda: p.peek())
+        self.assertRaises(StackUnderflowError, p.peek)
         p.push(1)
         #   Stack
         #
@@ -34,7 +32,7 @@ class StackTest(unittest.TestCase):
         #    Stack
         #
         #    |3|
-        #      |2|
+        #    |2|
         #    |1|
         #
         self.assertEqual(p.peek(), 3)
@@ -68,18 +66,7 @@ class StackTest(unittest.TestCase):
 
         p.clean()
         self.assertTrue(p.isEmpty())
-        self.assertRaises(StackUnderflowError, lambda: p.pop())
-
-    def test_peek(self):
-        stack = Stack()
-        self.assertRaises(StackUnderflowError, lambda: stack.peek())
-        stack.push(5)
-        self.assertTrue(stack.peek(), 5)
-        stack.push(6)
-        self.assertTrue(stack.peek(),
-                        6)
-        stack.pop()
-        self.assertTrue(stack.peek(), 5)
+        self.assertRaises(StackUnderflowError, p.pop)
 
     def test_findAll(self):
         stack = Stack()
@@ -94,3 +81,8 @@ class StackTest(unittest.TestCase):
         self.assertFalse(stack.isEmpty())
         stack.clean()
         self.assertTrue(stack.isEmpty())
+
+
+if __name__ == "__main__":
+    unittest.main()
+

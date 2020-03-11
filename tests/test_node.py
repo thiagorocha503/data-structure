@@ -5,43 +5,29 @@ import unittest
 
 class NodeTest(unittest.TestCase):
 
-    def test_criacao(self):
-        self.assertTrue(isinstance(Node(5), Node))
-        node = Node(5)
-        self.assertTrue(isinstance(Node(5, node), Node))
-        self.assertRaises(NodeTypeError, lambda: Node(4, " "))
+    def test_gettters_setteres(self):
+        # No com valor inicial
+        node_ = Node(7)
+        self.assertEqual(node_.getInfo(), 7)
+        self.assertIsNone(node_.getNext())
 
-    def test_getters_setteres(self):
-        node = Node(2)
-        self.assertEqual(node.getInfo(), 2)
-        self.assertEqual(node.getNext(), None)
+        # Nó sem valor inicial
+        node_a: Node = Node()
+        self.assertEqual(node_a.getInfo(), None)
+        self.assertEqual(node_a.getNext(), None)
 
-        node.setInfo(3)
-        next_node = Node(5)
-        node.setNext(next_node)
-        self.assertEqual(node.getInfo(), 3)
-        self.assertTrue(isinstance(node.getNext(), Node))
-        self.assertEqual(node.getNext(), next_node)
-        self.assertRaises(NodeTypeError, lambda: node.setNext(3))
+        node_a.setInfo(5)
+        node_b: Node = Node(9)
+        node_a.setNext(node_b)
+        self.assertEqual(node_a.getInfo(), 5)
+        self.assertEqual(node_a.getNext(), node_b)
+        self.assertEqual(node_a.getNext().getInfo(), 9)
+        self.assertEqual(node_a.getNext().getNext(), None)
 
-    def test_add(self):
-        node = Node()
-        node.add(1)
-        self.assertEqual(node.findAll(), [1])
-        for i in range(2, 6):
-            node.add(i)
-        self.assertEqual(node.findAll(), [1, 2, 3, 4, 5])
+        #  test Exception
+        self.assertRaises(NodeTypeError, lambda: Node(2, object))
+        self.assertRaises(NodeTypeError, lambda: node_a.setNext(object))
 
-    def test_remove(self):
-        node = Node()
-        for i in range(1, 6):
-            node.add(i)
-        self.assertEqual(node.findAll(), [1, 2, 3, 4, 5])
 
-        # remoção entre Node
-        node.remove(3)
-        self.assertEqual(node.findAll(), [1, 2, 4, 5])
-
-        # remoção no fim
-        node.remove(5)
-        self.assertEqual(node.findAll(), [1, 2, 4])
+if __name__ == "__main__":
+    unittest.main()
