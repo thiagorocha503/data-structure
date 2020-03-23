@@ -25,7 +25,7 @@ class ListDynamic:
     def remove(self, value: any) -> None:
         if self.__node is None:
             return
-        if self.__node.getInfo() == value:
+        if self.__node.getData() == value:
             self.__node = self.__node.getNext()
             self.__length -= 1
             return
@@ -34,7 +34,7 @@ class ListDynamic:
     def __remove(self, value: any, node: Node):
         # Verifica apenas um nó a frente
         if node.getNext() is not None:
-            if node.getNext().getInfo() == value:
+            if node.getNext().getData() == value:
                 node.setNext(node.getNext().getNext())
                 self.__length -= 1
             else:
@@ -45,13 +45,13 @@ class ListDynamic:
     def indexOf(self, value: any) -> int:
         currentNode: Node = self.__node
         for index in range(self.__length):
-            if currentNode.getInfo() == value:
+            if currentNode.getData() == value:
                 return index
             currentNode = currentNode.getNext()
         return -1
 
     def get(self, index: int) -> any:
-        return self.__get(index).getInfo()
+        return self.__get(index).getData()
 
     def __get(self, key: int) -> Node:
         if key > self.__length - 1 or key < 0:
@@ -67,7 +67,7 @@ class ListDynamic:
         currentNode: Node = self.__node
         result: list = []
         while currentNode is not None:
-            result.append(currentNode.getInfo())
+            result.append(currentNode.getData())
             currentNode = currentNode.getNext()
         return result
 
@@ -102,11 +102,11 @@ class ListDynamic:
         return self.length()
 
     def __getitem__(self, key: int) -> any:
-        return self.__get(key).getInfo()
+        return self.__get(key).getData()
 
     def __setitem__(self, key: int, value: any) -> any:
         currentNode: Node = self.__get(key)
-        currentNode.setInfo(value)
+        currentNode.setData(value)
 
     def __eq__(self, other) -> bool:
         if not isinstance(other, ListDynamic):

@@ -11,7 +11,7 @@ class Stack:
         if self.__top is None:
             raise struture_exception.StackUnderflowError
         else:
-            return self.__top.getInfo()
+            return self.__top.getData()
 
     def push(self, value):
         new_node = node.Node(value)
@@ -25,7 +25,7 @@ class Stack:
         if self.__top is None:
             raise struture_exception.StackUnderflowError
         else:
-            pushed = self.__top.getInfo()
+            pushed = self.__top.getData()
             self.__top = self.__top.getNext()
             return pushed
 
@@ -39,7 +39,7 @@ class Stack:
             nodes = []
             aux = self.__top
             while aux is not None:
-                nodes.append(aux.getInfo())
+                nodes.append(aux.getData())
                 aux = aux.getNext()
             return nodes
 

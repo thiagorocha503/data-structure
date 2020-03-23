@@ -8,20 +8,20 @@ class NodeTest(unittest.TestCase):
     def test_gettters_setteres(self):
         # No com valor inicial
         node_ = Node(7)
-        self.assertEqual(node_.getInfo(), 7)
+        self.assertEqual(node_.getData(), 7)
         self.assertIsNone(node_.getNext())
 
         # Nó sem valor inicial
         node_a: Node = Node()
-        self.assertEqual(node_a.getInfo(), None)
+        self.assertEqual(node_a.getData(), None)
         self.assertEqual(node_a.getNext(), None)
 
-        node_a.setInfo(5)
+        node_a.setData(5)
         node_b: Node = Node(9)
         node_a.setNext(node_b)
-        self.assertEqual(node_a.getInfo(), 5)
+        self.assertEqual(node_a.getData(), 5)
         self.assertEqual(node_a.getNext(), node_b)
-        self.assertEqual(node_a.getNext().getInfo(), 9)
+        self.assertEqual(node_a.getNext().getData(), 9)
         self.assertEqual(node_a.getNext().getNext(), None)
 
         #  test Exception

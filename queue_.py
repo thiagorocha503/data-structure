@@ -12,13 +12,13 @@ class Queue_:
         if self.__rear is None:
             raise QueueError("Fila vazia")
         else:
-            return self.__rear.getInfo()
+            return self.__rear.getData()
 
     def peek(self):
         if self.__front is None:
             raise QueueError("Fila vazia")
         else:
-            return self.__front.getInfo()
+            return self.__front.getData()
 
     def enqueue(self, value):
         new_node = node.Node(value)
@@ -49,7 +49,7 @@ class Queue_:
         aux = self.__front
         nodes = []
         while aux is not None:
-            nodes.append(aux.getInfo())
+            nodes.append(aux.getData())
             aux = aux.getNext()
         return nodes
 

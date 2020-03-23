@@ -3,15 +3,15 @@ import struture_exception
 
 class Node:
 
-    def __init__(self, info=None, next_=None):
-        self.__info = info
-        self.__next = self.setNext(next_)
+    def __init__(self, data: any = None, next_=None):
+        self.__data: any = data
+        self.__next: Node = self.setNext(next_)
 
-    def getInfo(self):
-        return self.__info
+    def getData(self):
+        return self.__data
 
-    def setInfo(self, value):
-        self.__info = value
+    def setData(self, value: any):
+        self.__data = value
 
     def getNext(self):
         return self.__next
@@ -23,4 +23,4 @@ class Node:
             raise struture_exception.NodeTypeError(node)
 
     def __str__(self):
-        return "(%s)" % str(self.__info)
+        return "(%s)" % str(self.__data)
