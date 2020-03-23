@@ -1,3 +1,14 @@
+
+
+class StrutureTypeExcption(Exception):
+
+    def __init__(self, message: str):
+        self.__message: str = message
+
+    def __str__(self):
+        return self.__message
+
+
 class ListDynamicIndexError(Exception):
 
     def __init__(self, index: int):
